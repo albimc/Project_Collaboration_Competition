@@ -72,7 +72,6 @@ As the DDPG framework, it is an off-policy actor-critic model free algorithm bas
 The main advantage of this approach is that it still follows a decentralised execution where each agent is aware of only his own surroundings and follows his own policy. At the same time agents learn is more efficient via a centralised critic which observes other agents' state and actions.
 
 
-
 \subsection{Loss Function}
 
 As in Q-Learning, by the Bellman equation, the loss function for the critic network  of each agent is the mean square error between the expected Q values computed on the local network and the target Q values computed on the network with momentarily frozen weights.
