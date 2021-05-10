@@ -115,13 +115,14 @@ You can either follow the steps in the python notebook `Tennis.ipynb` or run it 
 
 2. Main Python Code `main.py`
 
-3. Python module `ddpg_agent.py` defines class Agent that learns by interacting with environment.
+3. Multi-Agent Actor-Critic Deep Deterministic Policy from `maddpg.py` imports single agents from `ddpg.py` and eploratory noise process from `OUNoise.py`.
 
-4. Python module `ddpg_model.py` defines class Actor and Critic deep neural networks. 
+4. Experiences are stored adn sampled from `replaybuffer.py`
 
-5. Python module `ddpg_interact.py` defines how the agent interacts with the environment either learning or following best policy. 
+5. Other utilies functions imported from ``utilities.py`
 
-7. The PyTorch files `./Data/checkpoint_actor.pth`,`./Data/checkpoint_critic.pth` are the trained models with weights of the actor and critic networks respectively.  
+7. The PyTorch file `./episode-latest.pt` contains the dictionary of the trained models with weights of the two actor and critic networks.  
+
 
 
 ### GPU
