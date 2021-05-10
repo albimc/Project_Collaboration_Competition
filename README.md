@@ -121,7 +121,7 @@ You can either follow the steps in the python notebook `Tennis.ipynb` or run it 
 
 5. Other utilies functions imported from ``utilities.py`
 
-7. The PyTorch file `./episode-latest.pt` contains the dictionary of the trained models with weights of the two actor and critic networks.  
+7. The PyTorch file `./model_dir/episode-latest.pt` contains the dictionary of the trained models with weights of the two actor and critic networks.  
 
 
 
