@@ -81,7 +81,7 @@ The actor policy is updated using the sample policy gradient. We use the local p
 \subsubsection{Optimiser}
 
 The optimiser performs a stochastic gradient descent step on the loss function with respect to the network weights.\\
-We implement the Adam optimisation algorithm with learning rate of 1e-3.\\
+We implement the Adam optimisation algorithm with learning rate of 1e-4 for the actor and 3e-4 for the critic.\\
 
 
 \subsubsection{Critic Gradient Clipping}

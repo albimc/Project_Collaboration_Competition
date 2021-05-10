@@ -57,8 +57,8 @@ class MADDPG:
         # --- Experiences ---
         states = torch.from_numpy(np.stack(transpose_list([e.state for e in samples if e is not None]))).float().to(self.device)
         actions = torch.from_numpy(np.stack(transpose_list([e.action for e in samples if e is not None]))).float().to(self.device)
-        rewards = torch.from_numpy(np.vstack([max(e.reward) for e in samples if e is not None])).float().to(self.device).t()[0]  # Use Max
-        # rewards = torch.from_numpy(np.vstack([e.reward for e in samples if e is not None])).float().to(self.device)
+        # rewards = torch.from_numpy(np.vstack([max(e.reward) for e in samples if e is not None])).float().to(self.device).t()[0]  # Use Max
+        rewards = torch.from_numpy(np.vstack([e.reward for e in samples if e is not None])).float().to(self.device)
         next_states = torch.from_numpy(np.stack(transpose_list([e.next_state for e in samples if e is not None]))).float().to(self.device)
         dones = torch.from_numpy(np.vstack([e.done for e in samples if e is not None]).astype(np.uint8)).float().to(self.device)
 
@@ -77,8 +77,8 @@ class MADDPG:
         with torch.no_grad():
             target_next_q = agent.target_critic(next_states_flat, target_next_actions_flat).t()[0]
 
-        target_q = rewards + self.discount_factor * target_next_q * (1 - dones[:, agent_number])  # Use MAX
-        # target_q = rewards[:, agent_number] + self.discount_factor * target_next_q * (1 - dones[:, agent_number])
+        # target_q = rewards + self.discount_factor * target_next_q * (1 - dones[:, agent_number])  # Use MAX
+        target_q = rewards[:, agent_number] + self.discount_factor * target_next_q * (1 - dones[:, agent_number])
         local_q = agent.critic(states_flat, actions_flat).t()[0]
 
         critic_loss = F.mse_loss(local_q, target_q)
